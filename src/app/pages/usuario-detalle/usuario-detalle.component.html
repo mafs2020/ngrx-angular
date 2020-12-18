@@ -1,0 +1,18 @@
+
+<h1>formulario</h1>
+<form [formGroup]="formulario" (ngSubmit)="ActualizarUsuario()">
+    <label for="nombre">nombre:</label>
+    <input formControlName="nombre" type="text" name="nombre" id="">
+    <br />
+    <label for="apellido">apellido:</label>
+    <input formControlName="apellido" type="text" name="apellido" id="">
+    <br />
+    <label for="edad">edad:</label>
+    <input formControlName="edad" type="number" name="edad" id=""><br />
+    <div *ngIf="edad?.errors">
+        <span *ngIf="edad?.hasError('required')">el campo es requerido</span>
+        <span *ngIf="edad?.hasError('min')">el campo debe ser mayor que 18</span>
+        <span *ngIf="edad?.hasError('max')">el campo debe ser menor que 60</span>
+    </div>
+    <input type="submit" value="Enviar">
+</form>

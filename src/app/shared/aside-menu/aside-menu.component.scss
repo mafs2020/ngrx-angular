@@ -1,0 +1,180 @@
+.navbar{
+    width: 5rem;
+    height: 100vh;
+    background-color: #433d3c;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    transition: width 500ms ease;
+}
+
+.navbar-nav{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nabvar-item{
+    width: 100%;
+}
+
+.nabvar-item:last-child{
+    margin-top: auto;
+}
+
+.navbar:hover{
+    width: 16rem;
+}
+
+.navbar:hover .link-text{
+    display: block;
+}
+
+.nav-link{
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    text-decoration: none;
+    filter: grayscale(100%) opacity(0.7);
+    transition: 600ms;
+}
+
+.nav-link:hover{
+    filter: grayscale(0%) opacity(1);
+    background: #df49a6;
+}
+
+
+.link-text{
+    display: none;
+    margin-left: 1rem;
+    color: #fff;
+}
+
+li{
+    color: #fff;
+}
+
+svg{
+    color: #fff;
+}
+
+.logo{
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #df49a6;
+    background: #df49a6;
+    font-size: 1.5rem;
+    letter-spacing: 0.3ch;
+    width: 100%;
+}
+.logo svg{
+    transform: rotate(0deg);
+    transition: transform 600ms;
+}
+
+.navbar:hover .logo svg {
+    transform: rotate(-540deg);
+}
+
+.nav-link svg {
+    min-width: 2rem;
+    margin: 0 1.5rem;
+}
+
+.fa-primary{
+    color: #ff7eee;
+}
+.fa-secondary{
+    color: #df49a6;
+}
+
+.fa-primary, .fa-secondary{
+    transition: 600ms;
+}
+
+.svg-icon {
+    width: 3em;
+    height: 3em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+
+.svg-icon {
+    width: 3em;
+    height: 3em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+
+.svg-icon {
+    width: 3em;
+    height: 3em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+
+.svg-icon {
+    width: 5em;
+    height: 5em;
+}
+
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+    fill: #4691f6;
+}
+
+.svg-icon circle {
+    stroke: #4691f6;
+    stroke-width: 1;
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar{
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+
+    .navbar:hover {
+        width: 16rem;
+    }
+
+    .navbar:hover .link-text {
+        display: inline;
+        transition: 600ms;
+    }
+}
