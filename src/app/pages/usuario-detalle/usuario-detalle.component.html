@@ -1,18 +1,42 @@
-
-<h1>formulario</h1>
-<form [formGroup]="formulario" (ngSubmit)="ActualizarUsuario()">
-    <label for="nombre">nombre:</label>
-    <input formControlName="nombre" type="text" name="nombre" id="">
-    <br />
-    <label for="apellido">apellido:</label>
-    <input formControlName="apellido" type="text" name="apellido" id="">
-    <br />
-    <label for="edad">edad:</label>
-    <input formControlName="edad" type="number" name="edad" id=""><br />
-    <div *ngIf="edad?.errors">
-        <span *ngIf="edad?.hasError('required')">el campo es requerido</span>
-        <span *ngIf="edad?.hasError('min')">el campo debe ser mayor que 18</span>
-        <span *ngIf="edad?.hasError('max')">el campo debe ser menor que 60</span>
-    </div>
-    <input type="submit" value="Enviar">
-</form>
+<div class="formulario">
+    <h1>formulario</h1>
+    <form [formGroup]="formulario" (ngSubmit)="ActualizarUsuario()">
+        <label for="nombre">nombre:</label>
+        <input formControlName="nombre" type="text" name="nombre" id="">
+        <div *ngIf="nombre?.errors">
+            <span *ngIf="nombre?.hasError('required')">el campo es requerido</span>
+            <span *ngIf="nombre?.hasError('min')">el campo debe ser mayor que 18</span>
+            <span *ngIf="nombre?.hasError('max')">el campo debe ser menor que 60</span>
+        </div>
+        <br />
+        <label for="apellido">apellido:</label>
+        <input formControlName="apellido" type="text" name="apellido" id="">
+        <div *ngIf="apellido?.errors">
+            <span *ngIf="apellido?.hasError('required')">el campo es requerido</span>
+            <span *ngIf="apellido?.hasError('min')">el campo debe ser mayor que 18</span>
+            <span *ngIf="apellido?.hasError('max')">el campo debe ser menor que 60</span>
+        </div>
+        <br />
+        <label for="edad">edad:</label>
+        <input formControlName="edad" type="number" name="edad" id=""><br />
+        <div *ngIf="edad?.errors">
+            <span *ngIf="edad?.hasError('required')">el campo es requerido</span>
+            <span *ngIf="edad?.hasError('min')">el campo debe ser mayor que 18</span>
+            <span *ngIf="edad?.hasError('max')">el campo debe ser menor que 60</span>
+        </div>
+        <input type="submit" [disabled]="formulario.invalid" value="Enviar"><br />
+        <input type="button" value="Regresar" (click)="regresar()">
+        <pre>
+            {{ formulario.value | json }}
+            valido: {{ formulario.valid }}
+            invalido: {{ formulario.invalid }}
+            pristine: {{ formulario.pristine }}
+            dirty: {{ formulario.dirty }}
+            disabled: {{ formulario.disabled }}
+            pending: {{ formulario.pending }}
+            enabled: {{ formulario.enabled }}
+            touched: {{ formulario.touched }}
+            untouched: {{ formulario.untouched }}
+        </pre>
+    </form>
+</div>

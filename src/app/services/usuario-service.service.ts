@@ -25,19 +25,30 @@ export class UsuarioServiceService {
       );
     }
 
+    Uactualizarusuario(id: number, usu: IUsuario): Observable<IUsuario> {
+      console.log(usu);
+      return this.http.put<IUsuario>(`http://localhost:3000/${id}`, usu).pipe(
+        catchError(err => {
+          return this.handleError(err)
+        })
+      );
+    }
+
     private handleError(err: any): Observable<never> {
       // in a real world app, we may send the server to some remote logging infrastructure
       // instead of just logging it to the console
+      console.log(err);
       let errorMessage: string;
-      if (err.error instanceof ErrorEvent) {
+      if (err.error) {
         // A client-side or network error occurred. Handle it accordingly.
-        errorMessage = `An error occurred: ${err.error.message}`;
+        // errorMessage = `a ocurrido un error: ${err.error.message}`;
+        // errorMessage = `a ocurrido un error: ${err.message}`;
+        errorMessage = `a ocurrido un error: ${err.error.msj}`;
       } else {
         // The backend returned an unsuccessful response code.
         // The response body may contain clues as to what went wrong,
-        errorMessage = `Backend returned code ${err.status}: ${err.body.error}`;
+        errorMessage = `backend codigo ${err.status}:`;
       }
-      console.info(err);
       return throwError(errorMessage);
     }
 }
