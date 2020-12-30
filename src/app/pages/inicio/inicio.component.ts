@@ -26,4 +26,8 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['dashboard/usuario-detalle', id])
   }
 
+  crear() {
+    this.router.navigate(['dashboard/crear']);
+  }
+
 }

@@ -1,0 +1,121 @@
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
+    /* Enable scroll if needed */
+    display: block;
+    z-index: 1; /* Sit on top */
+    padding-top: 100px;
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); 
+}
+
+// .mostrar-modal{
+// }
+
+.modal-content{
+    border-radius: 5px;
+    border-radius: 5px;
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+    height: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.encabezado{
+    padding: 2px 16px;
+    height: 20%;
+    color: white;
+    // border-radius: 5px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.footer{
+    
+    padding: 2px 16px;
+    height: 20%;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.modal-body{
+    margin: 20px 33px;
+    font-size: 16px;
+    padding: 30px;
+}
+
+.modal-body div {
+    font-size: 20px;
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.encabezado-succes{
+    background-color: #b71c1c;
+}
+.encabezado-error{
+    background-color: #b71c1c;
+}
+.encabezado-aviso{
+    background-color: black;
+}
+
+.botones{
+    float: right;
+}
+
+.botones input{
+    padding: 10px;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #b71c1c;
+}
+
+.botones input:hover{
+    color: #b71c1c;
+    border: 2px solid #b71c1c;
+    background-color: #fff;
+}
+
+.botones input:first-child {
+    margin-right: 10px;
+    background-color: #757575;
+}
+
+.botones input:first-child:hover{
+    background-color: #fff;
+    color: #757575;
+    border: 2px solid #757575;
+}

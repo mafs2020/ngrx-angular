@@ -9,12 +9,14 @@ import { DashboarComponent } from './dashboar/dashboar.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RUTASPAGESMODULE } from './pages.routes';
 import { UsuarioDetalleComponent } from './usuario-detalle/usuario-detalle.component';
+import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
 @NgModule({
   declarations: [
     DashboarComponent,
     InicioComponent,
-    UsuarioDetalleComponent
+    UsuarioDetalleComponent,
+    CrearUsuarioComponent
   ],
   imports: [
     CommonModule,

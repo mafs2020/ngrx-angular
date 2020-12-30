@@ -1,0 +1,36 @@
+<div class="modal" *ngIf="mostraModal">
+    <div class="modal-content">
+        <div [ngClass]="{'encabezado': true, 'encabezado-succes': motivoModal == 'usuario', 'encabezado-error': motivoModal == 'error', 'encabezado-aviso': motivoModal == 'aviso' }">
+            <span class="close" (click)="cerrar()">&times;</span>
+        </div>
+        <!-- <div *ngIf="motivoModal"> -->
+            <div class="modal-body">
+                <div [ngSwitch]="motivoModal">
+                    <div *ngSwitchCase="'error'">ocurrio un error</div>
+                    <div *ngSwitchCase="'usuario'">Eliminar Usuario</div>
+                    <div *ngSwitchCase="'aviso'">aviso</div>
+                    <div *ngSwitchDefault>aviso default</div>
+                </div>
+                <div *ngIf="datosMostrara">{{ datosMostrara }}</div>
+                <div class="botones">
+                    <div [ngSwitch]="motivoModal">
+                        <div *ngSwitchCase="'error'">
+                            <input type="button" value="Ok" (click)="cerrar()">
+                        </div>
+                        <div *ngSwitchCase="'usuario'">
+                            <input type="button" value="Cancelar" (click)="cerrar()">
+                            <input type="button" value="Eliminar" (click)="eliminarUsuario()">
+                        </div>
+                        <div *ngSwitchCase="'aviso'">
+                            <input type="button" value="OK" (click)="cerrar()">
+                        </div>
+                        <div *ngSwitchDefault>
+                            <input type="button" value="OK" (click)="cerrar()">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <!-- </div> -->
+        <div [ngClass]="{'footer': true, 'encabezado-succes': motivoModal == 'usuario', 'encabezado-error': motivoModal == 'error', 'encabezado-aviso': motivoModal == 'aviso' }">
+    </div>
+</div>

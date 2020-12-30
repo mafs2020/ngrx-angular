@@ -1,10 +1,10 @@
 <div class="formulario">
     <div class="formulario-form">
-        <h1>Actualizar Usuario</h1>
-        <form [formGroup]="formulario" (ngSubmit)="ActualizarUsuario()">
+        <h1>Crear Usuario</h1>
+        <form [formGroup]="formulario" (ngSubmit)="crearUsuario()">
             <label for="nombre">nombre:</label>
             <input formControlName="nombre" type="text" name="nombre" id="">
-            <div *ngIf="nombre?.errors">
+            <div *ngIf="nombre?.errors && nombre?.dirty">
                 <span *ngIf="nombre?.hasError('required')">el campo es requerido</span>
                 <span *ngIf="nombre?.hasError('min')">el campo debe ser mayor que 18</span>
                 <span *ngIf="nombre?.hasError('max')">el campo debe ser menor que 60</span>
@@ -12,22 +12,21 @@
             <br />
             <label for="apellido">apellido:</label>
             <input formControlName="apellido" type="text" name="apellido" id="">
-            <div *ngIf="apellido?.errors">
+            <div *ngIf="apellido?.errors && apellido.dirty">
                 <span *ngIf="apellido?.hasError('required')">el campo es requerido</span>
                 <span *ngIf="apellido?.hasError('min')">el campo debe ser mayor que 18</span>
                 <span *ngIf="apellido?.hasError('max')">el campo debe ser menor que 60</span>
             </div>
             <br />
             <label for="edad">edad:</label>
-            <input class="inputs" formControlName="edad" type="number" name="edad"><br />
-            <div *ngIf="edad?.errors">
+            <input class="inputs" formControlName="edad" type="number" name="edad" id=""><br />
+            <div *ngIf="edad?.errors && edad?.dirty">
                 <span *ngIf="edad?.hasError('required')">el campo es requerido</span>
                 <span *ngIf="edad?.hasError('min')">el campo debe ser mayor que 18</span>
                 <span *ngIf="edad?.hasError('max')">el campo debe ser menor que 60</span>
             </div>
             <div class="botones">
                 <input class="btn boton__enviar" type="submit" [disabled]="formulario.invalid" value="Enviar"><br />
-                <input class="btn boton__eliminar" type="button" value="Eliminar" (click)="eliminar()"><br />
                 <input class="btn boton__regresar" type="button" value="Regresar" (click)="regresar()">
             </div>
             <!-- <pre>

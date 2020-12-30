@@ -4,3 +4,8 @@ export interface IUsuario{
     apellido: string;
     edad: number;
 }
+
+export interface IModal {
+    motivo: string;
+    modalContent: string;
+}

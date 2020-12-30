@@ -12,6 +12,7 @@ import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 export class UsuarioDetalleComponent implements OnInit {
   formulario: FormGroup;
   usuarioId: number;
+  nombreUsuario: string;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -26,7 +27,9 @@ export class UsuarioDetalleComponent implements OnInit {
           this.router.navigate(['/dashboard']);
         } else {
           this._usuarioServices.usuarioDetalle(+params.get('id')).subscribe(user => {
+            this._usuarioServices.user = user;
             this.usuarioId = +user.id;
+            this.nombreUsuario = user.nombre;
             this.formulario.patchValue({nombre: user.nombre, edad: user.edad, apellido: user.apellido});
           });
         }
@@ -43,7 +46,14 @@ export class UsuarioDetalleComponent implements OnInit {
     });
   }
   ActualizarUsuario() {
-    this._usuarioServices.Uactualizarusuario(this.usuarioId, this.formulario.value).subscribe(data => console.log(data));
+    this._usuarioServices.Uactualizarusuario(this.usuarioId, this.formulario.value)
+      .subscribe(data => console.log(data));
+  }
+
+  eliminar() {
+    this._usuarioServices.mostraModal.next(true);
+    this._usuarioServices.infoModal.next({motivo: 'usuario', modalContent: `deseas eliminar al usuario: ${this.nombreUsuario}`});
+    // this._usuarioServices.eliminar(this.usuarioId).subscribe(data => console.log(data));101
   }
 
   get nombre() {

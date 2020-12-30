@@ -16,4 +16,22 @@ table{
     table-layout:fixed;
     border: 1px solid #e9c496;
     width: 100%;
+    border-radius: 5px;
+}
+
+input[type="button"]{
+    background-color: #944e6c;
+    color: #fff;
+    border: none;
+    padding: 15px;
+    margin-top: 20px;
+    float: right;
+    border-radius: 5px;
+}
+
+input[type="button"]:hover{
+    background-color: #fff;
+    color: #944e6c;
+    cursor: pointer;
+    border: 2px solid #944e6c;
 }
