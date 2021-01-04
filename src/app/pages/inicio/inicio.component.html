@@ -1,21 +1,24 @@
-<table *ngIf="USuarios.length > 0; else otro">
-    <thead>
-        <th>id</th>
-        <th>nombre</th>
-        <th>apellido</th>
-        <th>edad</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let usu of USuarios" (click)="enviar(usu.id)">
-            <td>{{ usu.id }}</td>
-            <td>{{ usu.nombre }}</td>
-            <td>{{ usu.apellido }}</td>
-            <td>{{ usu.edad }}</td>
-        </tr>
-    </tbody>
-    <!-- <tfoot>Aqui esta el footer</tfoot> -->
-</table>
+<div style="overflow-x:auto;">
+    <table *ngIf="USuarios.length > 0; else otro">
+        <thead>
+            <th>id</th>
+            <th>nombre</th>
+            <th>apellido</th>
+            <th>edad</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usu of USuarios" (click)="enviar(usu.id)">
+                <td>{{ usu.id }}</td>
+                <td>{{ usu.nombre }}</td>
+                <td>{{ usu.apellido }}</td>
+                <td>{{ usu.edad }}</td>
+            </tr>
+        </tbody>
+        <!-- <tfoot>Aqui esta el footer</tfoot> -->
+    </table>
+</div>
 <ng-template #otro>
     <p>no hay info</p>
 </ng-template>
 <input type="button" value="Crear" (click)="crear()">
+<input type="button" value="Cambiar Imagen" (click)="cambirImagen()">

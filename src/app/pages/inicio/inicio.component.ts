@@ -30,4 +30,8 @@ export class InicioComponent implements OnInit {
     this.router.navigate(['dashboard/crear']);
   }
 
+  cambirImagen(){
+    this._usuarioServices.cambiarImagen();
+  }
+
 }

@@ -11,8 +11,12 @@ export class UsuarioServiceService {
   constructor(private http: HttpClient) { }
   curretnUser :IUsuario;
   user: IUsuario;
+  imagenBol: boolean = true;
   mostraModal : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   mostrarmodalnu = this.mostraModal.asObservable();
+
+  imagen : BehaviorSubject<string> = new BehaviorSubject<string>('http://localhost:3000/sssss.png');
+  imagenCambiar$ = this.imagen.asObservable();
 
   infoModal: Subject<IModal> = new Subject<IModal>();
   infoModal$ = this.infoModal.asObservable();
@@ -37,7 +41,6 @@ export class UsuarioServiceService {
     }
 
     Uactualizarusuario(id: number, usu: IUsuario): Observable<IUsuario> {
-      console.log(usu);
       return this.http.put<IUsuario>(`http://localhost:3000/${id}`, usu).pipe(
         catchError(err => {
           return this.handleError(err)
@@ -56,6 +59,15 @@ export class UsuarioServiceService {
     mostrarModalfuncion(data:IModal){
       this.mostraModal.next(true);
       this.infoModal.next(data);
+    }
+
+    cambiarImagen(): void {
+      if(this.imagenBol){
+        this.imagen.next('http://localhost:3000/ainz.png');
+      } else {
+        this.imagen.next('http://localhost:3000/sssss.png');
+      }
+      this.imagenBol = !this.imagenBol;
     }
 
     private handleError(err: any): Observable<never> {

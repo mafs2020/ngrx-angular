@@ -47,7 +47,11 @@ export class UsuarioDetalleComponent implements OnInit {
   }
   ActualizarUsuario() {
     this._usuarioServices.Uactualizarusuario(this.usuarioId, this.formulario.value)
-      .subscribe(data => console.log(data));
+      .subscribe(data => {
+        // this.router.navigate(['/dashboard']);
+        this._usuarioServices.mostraModal.next(true);
+    this._usuarioServices.infoModal.next({motivo: 'usuario', modalContent: `se actualizo el usuario`});
+      });
   }
 
   eliminar() {

@@ -1,0 +1,48 @@
+.menu{
+    height: 60px;
+    background-color: #433d3c;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+.menu-content{
+    width: 30%;
+    font-size: 16px;
+    float: right;
+    display: flex;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li:not(:first-child) {
+    background-color: ivory;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 15px;
+    margin-right: 35px;
+}
+
+.imagen{
+    object-fit: cover;
+    width: 30px;
+    height: 30px;
+    margin-right: 35px;
+    border-radius: 50%;
+}
+
+.navb{
+    margin: auto 0;
+    padding: auto;
+}
+
+.menu-content li {
+    cursor: pointer;
+}

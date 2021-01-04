@@ -3,6 +3,7 @@ export interface IUsuario{
     nombre: string;
     apellido: string;
     edad: number;
+    image?: string;
 }
 
 export interface IModal {
