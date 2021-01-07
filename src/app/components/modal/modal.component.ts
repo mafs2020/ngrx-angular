@@ -36,6 +36,7 @@ export class ModalComponent implements OnInit, OnDestroy {
   cerrar() {
     this.mostraModal = !this.mostraModal;
     this._usuarioServices.mostraModal.next(this.mostraModal);
+    this._usuarioServices.infoModal.next({motivo:'', modalContent:''});
   }
 
   eliminarUsuario() {

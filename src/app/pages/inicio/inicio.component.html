@@ -1,5 +1,5 @@
-<div style="overflow-x:auto;">
-    <table *ngIf="USuarios.length > 0; else otro">
+<div style="overflow-x:auto;" *ngIf="USuarios | async as usus;">
+    <table *ngIf="usus.length > 0; else otro">
         <thead>
             <th>id</th>
             <th>nombre</th>
@@ -7,7 +7,7 @@
             <th>edad</th>
         </thead>
         <tbody>
-            <tr *ngFor="let usu of USuarios" (click)="enviar(usu.id)">
+            <tr *ngFor="let usu of usus" (click)="enviar(usu.id)">
                 <td>{{ usu.id }}</td>
                 <td>{{ usu.nombre }}</td>
                 <td>{{ usu.apellido }}</td>
@@ -16,9 +16,11 @@
         </tbody>
         <!-- <tfoot>Aqui esta el footer</tfoot> -->
     </table>
+    <ng-template #otro>
+        <p>no hay info</p>
+    </ng-template>
 </div>
-<ng-template #otro>
-    <p>no hay info</p>
-</ng-template>
 <input type="button" value="Crear" (click)="crear()">
 <input type="button" value="Cambiar Imagen" (click)="cambirImagen()">
+<input type="button" value=">" (click)="siguientes()">
+<input type="button" value="<" (click)="anterior()">

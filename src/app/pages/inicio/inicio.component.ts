@@ -4,20 +4,30 @@ import { Observable } from 'rxjs';
 import { IUsuario } from 'src/app/interfaces/interface';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
+// tienes que traer el state que te interese
+import { State, loadUsuariosSucces, paginacion } from '../state/pages.reduce';
+import { Store } from '@ngrx/store';
+import * as pagesActions from '../state/pages.actions';
+
 @Component({
   selector: 'app-inicio',
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss']
 })
 export class InicioComponent implements OnInit {
-  USuarios: IUsuario[] = [];
+  // USuarios: IUsuario[] = [];
+  USuarios: Observable<IUsuario[]>;
+  paginacion:number;
   constructor(
     private router: Router,
-    private _usuarioServices :UsuarioServiceService
+    private _usuarioServices :UsuarioServiceService,
+    private store: Store<State>
     ) { }
 
   ngOnInit(): void {
-    this._usuarioServices.getAllUSers$.subscribe(data => this.USuarios = data);
+    this.store.select( paginacion ).subscribe(pagina => this.paginacion = pagina);
+    this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
+    this.USuarios = this.store.select(loadUsuariosSucces);
   }
   regresar() {
     this.router.navigate(['/login']);
@@ -32,6 +42,20 @@ export class InicioComponent implements OnInit {
 
   cambirImagen(){
     this._usuarioServices.cambiarImagen();
+  }
+
+  siguientes(): void {
+    this.paginacion += 1;
+    this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
+  }
+
+  anterior(): void {
+    if(this.paginacion == 0){
+      return;
+    } else {
+      this.paginacion -=1;
+      this.store.dispatch( pagesActions.loadUsuario({ paginacion: this.paginacion }));
+    }
   }
 
 }

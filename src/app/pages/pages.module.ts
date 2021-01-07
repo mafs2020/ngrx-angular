@@ -11,6 +11,12 @@ import { RUTASPAGESMODULE } from './pages.routes';
 import { UsuarioDetalleComponent } from './usuario-detalle/usuario-detalle.component';
 import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
 
+// ngrx
+import { StoreModule } from '@ngrx/store';
+import { pagesReducer } from './state/pages.reduce';
+import { EffectsModule } from '@ngrx/effects';
+import { PagesEffects } from './state/pages.effects';
+
 @NgModule({
   declarations: [
     DashboarComponent,
@@ -23,7 +29,9 @@ import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
     RUTASPAGESMODULE,
     SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forFeature('pages', pagesReducer),
+    EffectsModule.forFeature([PagesEffects])
   ]
 })
 export class PagesModule { }

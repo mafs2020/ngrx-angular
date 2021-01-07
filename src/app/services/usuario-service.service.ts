@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { IModal, IUsuario } from '../interfaces/interface';
+import { Store } from '@ngrx/store';
+import { State } from '../pages/state/pages.reduce';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioServiceService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private store$: Store<State>) { }
   curretnUser :IUsuario;
   user: IUsuario;
   imagenBol: boolean = true;
@@ -20,16 +22,23 @@ export class UsuarioServiceService {
 
   infoModal: Subject<IModal> = new Subject<IModal>();
   infoModal$ = this.infoModal.asObservable();
+  
 
-  getAllUSers$ = this.http.get<IUsuario[]>('http://localhost:3000/')
+  getAllUSers(pagina: number): Observable<IUsuario[]> {
+    return this.http.get<IUsuario[]>(`http://localhost:3000/?pagina=${pagina}`)
     .pipe(
       catchError(err => {
         return this.handleError(err)
       })
     );
+  }
 
     crearUsuario(usuario:IUsuario): Observable<any>{
-      return this.http.post('http://localhost:3000/', usuario);
+      return this.http.post('http://localhost:3000/', usuario).pipe(
+        catchError(err => {
+          return this.handleError(err)
+        })
+      );
     }
 
     usuarioDetalle(id: Number): Observable<IUsuario> {
