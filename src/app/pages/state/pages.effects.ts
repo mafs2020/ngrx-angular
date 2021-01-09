@@ -16,7 +16,7 @@ export class PagesEffects {
         return this.actions$.pipe(
             ofType(PagesActions.loadUsuario),
             mergeMap(action => this._usuarioServices.getAllUSers(action.paginacion).pipe(
-                map(usuarios => PagesActions.loadUsuariosSucces({ usuarios })),
+                map((resp:any) => PagesActions.loadUsuariosSucces({ usuarios:resp.rows })),
                 catchError(error => of(PagesActions.loadUsuarioError({ error })))
             ))
         )
