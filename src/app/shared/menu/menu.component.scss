@@ -46,3 +46,10 @@ ul li:not(:first-child) {
 .menu-content li {
     cursor: pointer;
 }
+
+
+@media screen and (max-width:470px) {
+    .menu-content{
+        display: none;
+    }
+}

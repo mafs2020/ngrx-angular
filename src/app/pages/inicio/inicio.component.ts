@@ -5,7 +5,7 @@ import { IUsuario } from 'src/app/interfaces/interface';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
 // tienes que traer el state que te interese
-import { State, loadUsuariosSucces, paginacion } from '../state/pages.reduce';
+import { State, loadUsuariosSucces, paginacion, paginacionCompleta } from '../state/pages.reduce';
 import { Store } from '@ngrx/store';
 import * as pagesActions from '../state/pages.actions';
 
@@ -16,8 +16,9 @@ import * as pagesActions from '../state/pages.actions';
 })
 export class InicioComponent implements OnInit {
   // USuarios: IUsuario[] = [];
-  USuarios: Observable<IUsuario[]>;
+  USuarios: IUsuario[];
   paginacion:number;
+  total: number;
   constructor(
     private router: Router,
     private _usuarioServices :UsuarioServiceService,
@@ -27,7 +28,10 @@ export class InicioComponent implements OnInit {
   ngOnInit(): void {
     this.store.select( paginacion ).subscribe(pagina => this.paginacion = pagina);
     this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
-    this.USuarios = this.store.select(loadUsuariosSucces);
+    this.store.select(paginacionCompleta).subscribe(resp => {
+      this.total = resp.total;
+      this.USuarios = resp.rows;
+    });
   }
   regresar() {
     this.router.navigate(['/login']);
@@ -45,8 +49,10 @@ export class InicioComponent implements OnInit {
   }
 
   siguientes(): void {
-    this.paginacion += 1;
-    this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
+    if( this.paginacion < (this.total -1) ) {
+      this.paginacion += 1;
+      this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
+    };
   }
 
   anterior(): void {

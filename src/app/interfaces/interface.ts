@@ -10,3 +10,12 @@ export interface IModal {
     motivo: string;
     modalContent: string;
 }
+
+export interface IPaginacion{
+    url?: string;
+    next?: boolean;
+    prev?: string;
+    rows?: IUsuario[];
+    count?: number;
+    total?: number;
+}

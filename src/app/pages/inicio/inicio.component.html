@@ -1,4 +1,4 @@
-<div style="overflow-x:auto;" *ngIf="USuarios | async as usus;">
+<div style="overflow-x:auto;" *ngIf="USuarios as usus;">
     <table *ngIf="usus.length > 0; else otro">
         <thead>
             <th>id</th>
@@ -20,7 +20,9 @@
         <p>no hay info</p>
     </ng-template>
 </div>
-<input type="button" value="Crear" (click)="crear()">
-<input type="button" value="Cambiar Imagen" (click)="cambirImagen()">
-<input type="button" value=">" (click)="siguientes()">
-<input type="button" value="<" (click)="anterior()">
+<div class="botones">
+    <input type="button" value="Crear" (click)="crear()">
+    <input type="button" value="Cambiar Imagen" (click)="cambirImagen()">
+    <input type="button" [disabled]="paginacion == (total - 1)" value=">" (click)="siguientes()">
+    <input type="button" [disabled]="paginacion == 0" value="<" (click)="anterior()">
+</div>

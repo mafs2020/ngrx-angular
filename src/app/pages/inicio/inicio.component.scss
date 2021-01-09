@@ -40,3 +40,20 @@ input[type="button"]:hover{
 .top{
     margin-top: 40px;
 }
+
+
+input{
+    margin-left: 1rem;
+    &:disabled, &:hover{
+        cursor: not-allowed;
+        background-color: #dddddd;
+        color: #fff;
+    }
+}
+
+@media screen and (max-width: 470px){
+    .botones{
+        display: flex;
+        flex-direction: column;
+    }
+}

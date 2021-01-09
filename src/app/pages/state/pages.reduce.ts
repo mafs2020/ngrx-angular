@@ -1,7 +1,7 @@
 import { createReducer, on, createFeatureSelector, createSelector } from '@ngrx/store';
 import * as PagesActions from './pages.actions';
 
-import { IUsuario } from '../../interfaces/interface';
+import { IPaginacion, IUsuario } from '../../interfaces/interface';
 
 import * as AppState from '../../state/app.state';
 
@@ -13,12 +13,14 @@ export interface PageState {
     paginacion: number;
     usuarios: IUsuario[];
     error: string;
+    paginacionCompleta: IPaginacion
 }
 
 const initialStatePage: PageState = {
     paginacion: 0,
     usuarios: [],
-    error: ''
+    error: '',
+    paginacionCompleta: { url: '', next: true, prev: '', rows: [], count: 0, total:0 }
 };
 
 
@@ -27,6 +29,12 @@ const getPagesFeatureState = createFeatureSelector<PageState>('pages');
 export const paginacion = createSelector(
     getPagesFeatureState,
     state => state.paginacion
+);
+
+
+export const paginacionCompleta = createSelector(
+    getPagesFeatureState,
+    state => state.paginacionCompleta
 );
 
 export const getUsuarios = createSelector(
@@ -69,6 +77,13 @@ export const pagesReducer = createReducer<PageState>(
             ...state,
             usuarios: [],
             error: action.error
+        }
+    }),
+    on(PagesActions.paginacionCompleta, (state, action): PageState => {
+        console.log(action);
+        return {
+            ...state,
+            paginacionCompleta: action.paginacionCompleta
         }
     }),
     // state: -> es el estado de la app lo que tienes

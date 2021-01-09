@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IUsuario } from 'src/app/interfaces/interface';
+import { IPaginacion, IUsuario } from 'src/app/interfaces/interface';
 
 export const loadUsuario = createAction(
     '[pages] Load',
@@ -14,4 +14,9 @@ export const loadUsuariosSucces = createAction(
 export const loadUsuarioError = createAction(
     '[pages] load Fail',
     props<{error: string}>()
+);
+
+export const paginacionCompleta = createAction(
+    '[pages] Paginacion Completa',
+    props<{ paginacionCompleta : IPaginacion}>()
 );

@@ -5,7 +5,7 @@ import * as PagesActions from './pages.actions';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 
 import { UsuarioServiceService } from "src/app/services/usuario-service.service";
-import { catchError, map, mergeMap } from "rxjs/operators";
+import { catchError, map, mergeMap, tap } from "rxjs/operators";
 import { of } from "rxjs";
 
 @Injectable() 
@@ -16,7 +16,8 @@ export class PagesEffects {
         return this.actions$.pipe(
             ofType(PagesActions.loadUsuario),
             mergeMap(action => this._usuarioServices.getAllUSers(action.paginacion).pipe(
-                map((resp:any) => PagesActions.loadUsuariosSucces({ usuarios:resp.rows })),
+                tap(data => console.log('data resp :>> ', data)),
+                map(resp => PagesActions.paginacionCompleta({ paginacionCompleta: resp })),
                 catchError(error => of(PagesActions.loadUsuarioError({ error })))
             ))
         )

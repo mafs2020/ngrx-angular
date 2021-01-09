@@ -1,11 +1,11 @@
 .formulario{
     // max-width: 50%;
+    display: block;
     padding: 0 60px 60px;
     border: 1px solid #944e6c;
     background-color: #f2f2f2;
     margin: 15px 100px;
     border-radius: 5px;
-    // overflow: hidden;
     & > h1 {
         text-align: center;
     }
@@ -111,4 +111,13 @@
     border: none;
     letter-spacing: normal;
     color: #fff;
+}
+
+@media screen and (max-width:470px){
+    .formulario{
+        margin: 0;
+    }
+    .botones{
+        flex-direction: column;
+    }
 }

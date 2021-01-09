@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of, Subject, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
-import { IModal, IUsuario } from '../interfaces/interface';
+import { catchError, tap } from 'rxjs/operators';
+import { IModal, IPaginacion, IUsuario } from '../interfaces/interface';
 import { Store } from '@ngrx/store';
 import { State } from '../pages/state/pages.reduce';
 
@@ -24,8 +24,8 @@ export class UsuarioServiceService {
   infoModal$ = this.infoModal.asObservable();
   
 
-  getAllUSers(pagina: number): Observable<IUsuario[]> {
-    return this.http.get<IUsuario[]>(`http://localhost:3000/?pagina=${pagina}`)
+  getAllUSers(pagina: number): Observable<IPaginacion> {
+    return this.http.get<IPaginacion>(`http://localhost:3000/?pagina=${pagina}`)
     .pipe(
       catchError(err => {
         return this.handleError(err)
