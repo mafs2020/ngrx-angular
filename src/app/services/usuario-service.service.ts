@@ -104,5 +104,5 @@ export class UsuarioServiceService {
       // mostrar modal
       this.mostraModal.next(true);
       return throwError(errorMessage);
-    }
+  }
 }

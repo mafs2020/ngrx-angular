@@ -14,6 +14,9 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 
+import { usersReducer } from './state/user.reduce';
+import { UserEffects } from './state/user.effects';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,12 +27,14 @@ import { EffectsModule } from '@ngrx/effects';
     RUTASPADREMODULE,
     HttpClientModule,
     StoreModule.forRoot({}),
+    StoreModule.forFeature('usuarios', usersReducer),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([UserEffects]),
     StoreDevtoolsModule.instrument({
       name: 'APM Demo App DevTools',
       maxAge: 25,
       logOnly: environment.production
     }),
-    EffectsModule.forRoot([])
     // SharedModule
   ],
   providers: [],
