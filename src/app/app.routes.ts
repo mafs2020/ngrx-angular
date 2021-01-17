@@ -2,8 +2,8 @@ import { NoPreloading, PreloadAllModules, RouterModule, Routes } from "@angular/
 import { LoginComponent } from "./login/login.component";
 
 const rutasPadre: Routes = [
-    { path: 'dashboard', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
     { path: 'login', component: LoginComponent },
+    { path: 'dashboard', loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule) },
     { path: '**', redirectTo: '/dashboard', pathMatch: 'full' }
 ];
 

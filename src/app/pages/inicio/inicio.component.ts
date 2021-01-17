@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IUsuario } from 'src/app/interfaces/interface';
 import { UsuarioServiceService } from 'src/app/services/usuario-service.service';
 
@@ -14,11 +14,13 @@ import * as pagesActions from '../state/pages.actions';
   templateUrl: './inicio.component.html',
   styleUrls: ['./inicio.component.scss']
 })
-export class InicioComponent implements OnInit {
+export class InicioComponent implements OnInit, OnDestroy {
   // USuarios: IUsuario[] = [];
   USuarios: IUsuario[];
   paginacion:number;
   total: number;
+  a: Subscription;
+  b: Subscription;
   constructor(
     private router: Router,
     private _usuarioServices :UsuarioServiceService,
@@ -26,9 +28,9 @@ export class InicioComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.store.select( paginacion ).subscribe(pagina => this.paginacion = pagina);
+    this.a = this.store.select( paginacion ).subscribe(pagina => this.paginacion = pagina);
     this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
-    this.store.select(paginacionCompleta).subscribe(resp => {
+    this.b = this.store.select(paginacionCompleta).subscribe(resp => {
       this.total = resp.total;
       this.USuarios = resp.rows;
     });
@@ -62,6 +64,12 @@ export class InicioComponent implements OnInit {
       this.paginacion -=1;
       this.store.dispatch( pagesActions.loadUsuario({ paginacion: this.paginacion }));
     }
+  }
+
+  ngOnDestroy(): void {
+    console.log(this.a);
+    this.a.unsubscribe();
+    this.b.unsubscribe();
   }
 
 }

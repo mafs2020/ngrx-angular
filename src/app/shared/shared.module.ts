@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { AsideMenuComponent } from './aside-menu/aside-menu.component';
 import { ModalComponent } from '../components/modal/modal.component';
 import { MenuComponent } from './menu/menu.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { MenuComponent } from './menu/menu.component';
     MenuComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
     AsideMenuComponent,

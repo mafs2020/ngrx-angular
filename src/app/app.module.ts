@@ -16,6 +16,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { usersReducer } from './state/user.reduce';
 import { UserEffects } from './state/user.effects';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { UserEffects } from './state/user.effects';
       maxAge: 25,
       logOnly: environment.production
     }),
+    RouterModule
     // SharedModule
   ],
   providers: [],
