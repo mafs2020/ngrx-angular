@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { pagesReducer } from './state/pages.reduce';
 import { EffectsModule } from '@ngrx/effects';
 import { PagesEffects } from './state/pages.effects';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { PagesEffects } from './state/pages.effects';
     FormsModule,
     ReactiveFormsModule,
     StoreModule.forFeature('pages', pagesReducer),
-    EffectsModule.forFeature([PagesEffects])
+    EffectsModule.forFeature([PagesEffects]),
+    // RouterModule
   ]
 })
 export class PagesModule { }

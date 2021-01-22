@@ -17,7 +17,9 @@ export class UserEffects {
     return this.actions$.pipe(
       ofType(UserActions.loginLoad),
       mergeMap(action => this._userServices.login(action.usuario).pipe(
-        tap(data => console.log(data)),
+        tap(data => {
+          console.log('datos:', data)
+        }),
         map(resp => UserActions.loginLoadSucess({ token: resp })),
         catchError(error => of(UserActions.loginLoadError({ error })))
       ))

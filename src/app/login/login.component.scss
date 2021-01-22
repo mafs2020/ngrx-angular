@@ -1,0 +1,97 @@
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-image: linear-gradient(to top, rgba(240, 160, 217, 0.692) 0%, rgba(166, 192, 238, 0.705) 100%), url('/assets/img/fondo.jpg');
+    // background-image: linear-gradient(to top, rgba(161, 140, 209, 0.63) 0%, rgba(251, 194, 235, 0.719) 100%), url('/assets/img/fondo.jpg');
+    /* se supone que no la repite pero aqui me la desaparece */
+    background-repeat: no-repeat;
+    /* background: no-repeat; */
+    background-size: cover;
+    background-position: center;
+    /* para que haga el efecto de seguir el scroll */
+    background-attachment: fixed;
+    position: relative;
+    /* para que nada salga */
+    overflow: hidden;
+}
+
+.container .contenedor{
+    background-color: #f2f2f2;
+    width: 500px;
+    border-radius: 15px;
+    position: fixed;
+    top: 15%;
+    left: 30%;
+    padding: 1em;
+}
+
+.container .contenedor form{
+    text-align: center;
+    font-size: 20px;
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container .contenedor form label, input{
+    margin: 20px 0;
+}
+
+
+.container .contenedor form input {
+    display: block;
+    padding: 15px;
+    margin: 5px auto;
+    width: 80%;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    border-radius: 5px;
+    &:focus:not([type="button"]){
+        border-bottom: 2px solid rgba(240, 160, 217, 1);
+    }
+    &:hover:not([type="button"]){
+        border-bottom: 2px solid rgba(166, 192, 238, 1);
+    }
+}
+
+.container .contenedor form .texto-boton{
+    font-size: 20px;
+    text-transform: uppercase;
+    background-color: cadetblue;
+    outline: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    &:hover{
+        border: 2px solid cadetblue;
+        background-color: #fff;
+        color: rgb(95, 158, 160);
+    }
+    &:disabled{
+        background-color: rgba(95, 158, 160, 0.4);
+        cursor: not-allowed;
+        &:hover{
+            border: none;
+            color: #fff;
+        }
+    }
+}
+
+
+
+
+
+
+
+// .container .contenedor form label::before{
+//     content : "";
+//     // position: absolute;
+//     left    : 0;
+//     bottom  : 0;
+//     height  : 1px;
+//     width   : 50%;  /* or 100px */
+//     // border-bottom:1px solid magenta;
+//     border-bottom: 1px solid cadetblue;
+// }

@@ -34,6 +34,7 @@ export class InicioComponent implements OnInit, OnDestroy {
       this.total = resp.total;
       this.USuarios = resp.rows;
     });
+    console.log(this.a);
   }
   regresar() {
     this.router.navigate(['/login']);

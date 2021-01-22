@@ -5,12 +5,14 @@ import * as userActions from '../state/user.actions';
 export interface UsersState {
     usuarioCurrent: IUsuario;
     usuarioSelect: IUsuario;
+    token: string;
     error: string;
 }
 
 const initialUser: UsersState = {
     usuarioCurrent: null,
     usuarioSelect: null,
+    token: '',
     error: ''
 };
 
@@ -30,6 +32,18 @@ export const usersReducer = createReducer<UsersState>(
         console.log('action :>> ', action);
         return {
             ...state
+        }
+    }),
+    on(userActions.loginLoadSucess, (state, action): UsersState => {
+        return {
+            ...state,
+            token: action.token
+        }
+    }),
+    on(userActions.loginLoadError, (state, action): UsersState => {
+        return {
+            ...state,
+            error: action.error
         }
     })
 );

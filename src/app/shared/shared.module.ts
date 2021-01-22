@@ -15,12 +15,13 @@ import { RouterModule } from '@angular/router';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    // RouterModule
   ],
   exports: [
     AsideMenuComponent,
     ModalComponent,
-    MenuComponent
+    MenuComponent,
+    // RouterModule
   ]
 })
 export class SharedModule { }

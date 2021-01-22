@@ -17,8 +17,7 @@ export class UserService {
     ) { }
 
   login(usuario: IUsuario): Observable<any> {
-    console.log('object');
-    return this.http.post<any>('http://localhost:3000/', usuario)
+    return this.http.post<any>('http://localhost:3000/login', usuario)
         .pipe(
           catchError(err => this.handleError(err))
         )

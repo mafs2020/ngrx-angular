@@ -1,3 +1,20 @@
-<p>login works!</p>
-<input type="button" value="Pages" (click)="irPages()">
-<input type="button" value="clg" (click)="abrir()">
+<div class="container">
+
+    <div class="contenedor">
+        <form [formGroup]="formulario" (ngSubmit)="ingresar()">
+            <label for="usuario">usuario</label>
+            <input type="text" name="usuario" formControlName="nombre">
+            <label for="password">contraseña</label>
+            <input type="password" name="password" formControlName="password">
+            <input class="texto-boton" [disabled]="formulario.invalid" type="submit" value="Ingresar">
+        </form>
+    </div>
+</div>
+<!-- <pre>
+    {{ formulario.value | json }}
+</pre> -->
+
+<!--
+    <input type="button" value="Pages" (click)="irPages()">
+    <input type="button" value="clg" (click)="abrir()"> -->
+
