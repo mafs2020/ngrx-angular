@@ -5,7 +5,7 @@ import * as userActions from '../state/user.actions';
 export interface UsersState {
     usuarioCurrent: IUsuario;
     usuarioSelect: IUsuario;
-    token: string;
+    token?: string;
     error: string;
 }
 
@@ -16,25 +16,27 @@ const initialUser: UsersState = {
     error: ''
 };
 
-
-const getUsersFeatureState = createFeatureSelector<UsersState>('users');
-
+const getUsersFeatureState = createFeatureSelector<UsersState>('usuarios');
 
 export const usuarioCurrent = createSelector(
     getUsersFeatureState,
     state => state.usuarioCurrent
 );
 
+export const token = createSelector(
+    getUsersFeatureState,
+    state => state.token
+);
+
 export const usersReducer = createReducer<UsersState>(
     initialUser,
     on(userActions.loginLoad, (state, action): UsersState => {
-        console.log('state :>> ', state);
-        console.log('action :>> ', action);
         return {
             ...state
         }
     }),
     on(userActions.loginLoadSucess, (state, action): UsersState => {
+        console.log('action :>> ', action);
         return {
             ...state,
             token: action.token

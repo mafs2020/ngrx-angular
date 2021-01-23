@@ -8,6 +8,7 @@ import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 import { State, loadUsuariosSucces, paginacion, paginacionCompleta } from '../state/pages.reduce';
 import { Store } from '@ngrx/store';
 import * as pagesActions from '../state/pages.actions';
+import { usuarioCurrent } from 'src/app/state/user.reduce';
 
 @Component({
   selector: 'app-inicio',
@@ -19,8 +20,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   USuarios: IUsuario[];
   paginacion:number;
   total: number;
-  a: Subscription;
-  b: Subscription;
+  
   constructor(
     private router: Router,
     private _usuarioServices :UsuarioServiceService,
@@ -28,13 +28,14 @@ export class InicioComponent implements OnInit, OnDestroy {
     ) { }
 
   ngOnInit(): void {
-    this.a = this.store.select( paginacion ).subscribe(pagina => this.paginacion = pagina);
+    this.store.select( paginacion ).subscribe(pagina => this.paginacion = pagina);
+    // this.store.select( usuarioCurrent ).subscribe(data => console.log(data));
     this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
-    this.b = this.store.select(paginacionCompleta).subscribe(resp => {
+    this.store.select(paginacionCompleta).subscribe(resp => {
       this.total = resp.total;
       this.USuarios = resp.rows;
     });
-    console.log(this.a);
+    // console.log(this.a);
   }
   regresar() {
     this.router.navigate(['/login']);
@@ -68,9 +69,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log(this.a);
-    this.a.unsubscribe();
-    this.b.unsubscribe();
+    
   }
 
 }

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validator, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { Store } from '@ngrx/store';
+import { tap } from 'rxjs/operators';
 import { State } from '../state/app.state';
 
 import * as UserActions from '../state/user.actions';
@@ -25,6 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.iniciarFormulario();
   }
+  
   iniciarFormulario(): void {
     this.formulario = this.fb.group({
       nombre: ['martin', Validators.required],

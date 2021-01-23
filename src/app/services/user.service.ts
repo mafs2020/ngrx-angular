@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { IUsuario } from '../interfaces/interface';
 
@@ -16,9 +16,10 @@ export class UserService {
     private http: HttpClient
     ) { }
 
-  login(usuario: IUsuario): Observable<any> {
+  login(usuario: IUsuario): Observable<string> {
     return this.http.post<any>('http://localhost:3000/login', usuario)
         .pipe(
+          map(data => data.token),
           catchError(err => this.handleError(err))
         )
   }

@@ -13,9 +13,9 @@ import { environment } from 'src/environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-
 import { usersReducer } from './state/user.reduce';
 import { UserEffects } from './state/user.effects';
+
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
