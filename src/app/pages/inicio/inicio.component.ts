@@ -17,13 +17,13 @@ import { usuarioCurrent } from 'src/app/state/user.reduce';
 })
 export class InicioComponent implements OnInit, OnDestroy {
   // USuarios: IUsuario[] = [];
-  USuarios: IUsuario[];
-  paginacion:number;
+  usuarios: IUsuario[];
+  paginacion: number;
   total: number;
-  
+
   constructor(
     private router: Router,
-    private _usuarioServices :UsuarioServiceService,
+    private usuarioServices: UsuarioServiceService,
     private store: Store<State>
     ) { }
 
@@ -33,7 +33,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     this.store.dispatch(pagesActions.loadUsuario({paginacion: this.paginacion}));
     this.store.select(paginacionCompleta).subscribe(resp => {
       this.total = resp.total;
-      this.USuarios = resp.rows;
+      this.usuarios = resp.rows;
     });
     // console.log(this.a);
   }
@@ -41,7 +41,7 @@ export class InicioComponent implements OnInit, OnDestroy {
     this.router.navigate(['/login']);
   }
   enviar(id: number){
-    this.router.navigate(['dashboard/usuario-detalle', id])
+    this.router.navigate(['dashboard/usuario-detalle', id]);
   }
 
   crear() {
@@ -49,7 +49,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
   cambirImagen(){
-    this._usuarioServices.cambiarImagen();
+    this.usuarioServices.cambiarImagen();
   }
 
   siguientes(): void {
@@ -60,7 +60,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
   anterior(): void {
-    if(this.paginacion == 0){
+    if(this.paginacion === 0){
       return;
     } else {
       this.paginacion -=1;
@@ -69,7 +69,7 @@ export class InicioComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    
+
   }
 
 }

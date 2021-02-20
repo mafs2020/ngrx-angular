@@ -8,10 +8,10 @@ import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 })
 export class MenuComponent implements OnInit {
   imagen: string;
-  constructor(private _usuarioService:UsuarioServiceService) { }
+  constructor(private usuarioService: UsuarioServiceService) { }
 
   ngOnInit(): void {
-    this._usuarioService.imagenCambiar$.subscribe(url => {
+    this.usuarioService.imagenCambiar$.subscribe(url => {
       console.log(url);
       this.imagen = url;
     });

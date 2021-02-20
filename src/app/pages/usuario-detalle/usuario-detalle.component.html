@@ -1,8 +1,8 @@
 <div class="formulario">
     <div class="formulario-form">
         <h1>Actualizar Usuario</h1>
-        <form [formGroup]="formulario" (ngSubmit)="ActualizarUsuario()">
-            <label for="nombre">nombre:</label>
+        <form [formGroup]="formulario" (ngSubmit)="actualizarUsuario()">
+            <label class="g" for="nombre">nombre:</label>
             <input formControlName="nombre" type="text" name="nombre" id="">
             <div *ngIf="nombre?.errors">
                 <span *ngIf="nombre?.hasError('required')">el campo es requerido</span>
@@ -10,7 +10,7 @@
                 <span *ngIf="nombre?.hasError('max')">el campo debe ser menor que 60</span>
             </div>
             <br />
-            <label for="apellido">apellido:</label>
+            <label class="g" for="apellido">apellido:</label>
             <input formControlName="apellido" type="text" name="apellido" id="">
             <div *ngIf="apellido?.errors">
                 <span *ngIf="apellido?.hasError('required')">el campo es requerido</span>
@@ -18,7 +18,7 @@
                 <span *ngIf="apellido?.hasError('max')">el campo debe ser menor que 60</span>
             </div>
             <br />
-            <label for="edad">edad:</label>
+            <label class="g" for="edad">edad:</label>
             <input class="inputs" formControlName="edad" type="number" name="edad"><br />
             <div *ngIf="edad?.errors">
                 <span *ngIf="edad?.hasError('required')">el campo es requerido</span>
@@ -26,9 +26,9 @@
                 <span *ngIf="edad?.hasError('max')">el campo debe ser menor que 60</span>
             </div>
             <div class="botones">
-                <input class="btn boton__enviar" type="submit" [disabled]="formulario.invalid" value="Actualizar"><br />
-                <input class="btn boton__eliminar" type="button" value="Eliminar" (click)="eliminar()"><br />
+                <input class="btn boton__enviar" type="submit" [disabled]="formulario.invalid" value="Actualizar">
                 <input class="btn boton__regresar" type="button" value="Regresar" (click)="regresar()">
+                <input class="btn boton__eliminar" type="button" value="Eliminar" (click)="eliminar()">
             </div>
             <!-- <pre>
                 {{ formulario.value | json }}

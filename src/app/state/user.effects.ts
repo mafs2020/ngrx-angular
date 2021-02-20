@@ -12,24 +12,22 @@ import { Router } from '@angular/router';
 @Injectable()
 export class UserEffects {
 
-  constructor(private actions$: Actions, private _userServices: UserService, private router: Router) { }
+  constructor(private actions$: Actions, private userServices: UserService, private router: Router) { }
 
-  login$ = createEffect(() => {
-    return this.actions$.pipe(
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  login$ = createEffect(() => this.actions$.pipe(
       ofType(UserActions.loginLoad),
-      mergeMap(action => this._userServices.login(action.usuario).pipe(
-        tap(token => console.log(token)),
+      mergeMap(action => this.userServices.login(action.usuario).pipe(
         map(token => UserActions.loginLoadSucess({ token })),
         catchError(error => of(UserActions.loginLoadError({ error })))
       ))
-    )
-  });
+    ));
 
   // sirve para redirigir cuando se loggie correctamente
-  redirecionar$ = createEffect(() => {
-    return this.actions$.pipe(
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  redirecionar$ = createEffect(() => this.actions$.pipe(
         ofType(UserActions.loginLoadSucess),
-        tap(() => this.router.navigate(['/dashboard'])))
-  }, {dispatch: false});
+        tap(({ token }) => console.log(token)),
+        tap((action) => this.router.navigate(['/dashboard']))), {dispatch: false});
 
 }

@@ -11,12 +11,12 @@ import { UsuarioServiceService } from 'src/app/services/usuario-service.service'
 })
 export class ModalComponent implements OnInit, OnDestroy {
   mostraModal: boolean;
-  error: {} = {};
+  error = {};
   datosMostrara: string;
-  motivoModal: string = '';
-  // datosMostrara = this._usuarioServices.infoModal$;
+  motivoModal = '';
+  // datosMostrara = this.usuarioServices.infoModal$;
   constructor(
-    private _usuarioServices: UsuarioServiceService,
+    private usuarioServices: UsuarioServiceService,
     private router: Router
     ) { }
 
@@ -25,26 +25,26 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this._usuarioServices.mostrarmodalnu.subscribe(mostrar => this.mostraModal = mostrar);
-    this._usuarioServices.infoModal$.subscribe(data => {
+    this.usuarioServices.mostrarmodalnu.subscribe(mostrar => this.mostraModal = mostrar);
+    this.usuarioServices.infoModal$.subscribe(data => {
       console.log(data);
       this.datosMostrara = data.modalContent;
-      this.motivoModal = data.motivo
+      this.motivoModal = data.motivo;
     });
   }
 
   cerrar() {
     this.mostraModal = !this.mostraModal;
-    this._usuarioServices.mostraModal.next(this.mostraModal);
-    this._usuarioServices.infoModal.next({motivo:'', modalContent:''});
+    this.usuarioServices.mostraModal.next(this.mostraModal);
+    this.usuarioServices.infoModal.next({motivo:'', modalContent:''});
   }
 
   eliminarUsuario() {
-    const usuario = this._usuarioServices.user;
+    const usuario = this.usuarioServices.user;
     this.cerrar();
-    this._usuarioServices.eliminar(usuario.id).subscribe(data => {
-      this._usuarioServices.mostraModal.next(true);
-      this._usuarioServices.infoModal.next({motivo: 'aviso', modalContent: 'se elimino al usuario correctamente'});
+    this.usuarioServices.eliminar(usuario.id).subscribe(data => {
+      this.usuarioServices.mostraModal.next(true);
+      this.usuarioServices.infoModal.next({motivo: 'aviso', modalContent: 'se elimino al usuario correctamente'});
       this.router.navigate(['']);
     });
   }

@@ -13,7 +13,7 @@ export class CrearUsuarioComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private _usuarioServices : UsuarioServiceService
+    private usuarioServices: UsuarioServiceService
     ) { }
 
   ngOnInit(): void {
@@ -21,16 +21,16 @@ export class CrearUsuarioComponent implements OnInit {
   }
   iniciarFormulario(){
     this.formulario = this.fb.group({
-      nombre: ["", { validators: Validators.required, updateOn: "blur" }],
+      nombre: ['', { validators: Validators.required, updateOn: 'blur' }],
       apellido: ['', Validators.required],
       edad: ['', [Validators.required, Validators.min(18), Validators.max(60)]]
     });
   }
 
   crearUsuario(){
-    this._usuarioServices.crearUsuario(this.formulario.value).subscribe(data => {
-      this._usuarioServices.mostrarModalfuncion({motivo:'aviso', modalContent:'se agrego al usuario'});
-      this.formulario.patchValue({nombre: '', apellido: '', edad: null})
+    this.usuarioServices.crearUsuario(this.formulario.value).subscribe(data => {
+      this.usuarioServices.mostrarModalfuncion({motivo:'aviso', modalContent:'se agrego al usuario'});
+      this.formulario.patchValue({nombre: '', apellido: '', edad: null});
       this.formulario.reset();
     });
   }

@@ -13,7 +13,7 @@ export interface PageState {
     paginacion: number;
     usuarios: IUsuario[];
     error: string;
-    paginacionCompleta: IPaginacion
+    paginacionCompleta: IPaginacion;
 }
 
 const initialStatePage: PageState = {
@@ -45,7 +45,7 @@ export const getUsuarios = createSelector(
 export const loadUsuariosSucces = createSelector(
     getPagesFeatureState,
     state => state.usuarios
-)
+);
 
 export const getError = createSelector(
     getPagesFeatureState,
@@ -54,13 +54,11 @@ export const getError = createSelector(
 
 export const pagesReducer = createReducer<PageState>(
     initialStatePage,
-    on(PagesActions.loadUsuario, (state, action): PageState => {
-        return {
+    on(PagesActions.loadUsuario, (state, action): PageState => ({
             ...state,
             usuarios: [],
             paginacion: action.paginacion
-        };
-    }),
+        })),
     on(PagesActions.loadUsuariosSucces, (state, action): PageState => {
         console.group('loadUsuariosSucces');
         console.log('action :>> ', action);
@@ -70,21 +68,19 @@ export const pagesReducer = createReducer<PageState>(
             ...state,
             usuarios: action.usuarios,
             error: ''
-        }
+        };
     }),
-    on(PagesActions.loadUsuarioError, (state, action): PageState => {
-        return {
+    on(PagesActions.loadUsuarioError, (state, action): PageState => ({
             ...state,
             usuarios: [],
             error: action.error
-        }
-    }),
+        })),
     on(PagesActions.paginacionCompleta, (state, action): PageState => {
         console.log(action);
         return {
             ...state,
             paginacionCompleta: action.paginacionCompleta
-        }
+        };
     }),
     // state: -> es el estado de la app lo que tienes
     // action: -> es la informacion que estas mandando por ende la info que vas a actualizar al state

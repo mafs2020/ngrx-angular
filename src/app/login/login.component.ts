@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.iniciarFormulario();
   }
-  
+
   iniciarFormulario(): void {
     this.formulario = this.fb.group({
       nombre: ['martin', Validators.required],

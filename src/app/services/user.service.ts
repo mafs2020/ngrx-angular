@@ -21,7 +21,7 @@ export class UserService {
         .pipe(
           map(data => data.token),
           catchError(err => this.handleError(err))
-        )
+        );
   }
 
   private handleError(err: any): Observable<never> {
@@ -29,7 +29,7 @@ export class UserService {
     // instead of just logging it to the console
     console.log('este es el error', err);
     let errorMessage: string;
-    
+
     if (err?.message) {
       // A client-side or network error occurred. Handle it accordingly.
       // errorMessage = `a ocurrido un error: ${err.error.message}`;

@@ -18,5 +18,5 @@ export const loadUsuarioError = createAction(
 
 export const paginacionCompleta = createAction(
     '[pages] Paginacion Completa',
-    props<{ paginacionCompleta : IPaginacion}>()
+    props<{ paginacionCompleta: IPaginacion}>()
 );

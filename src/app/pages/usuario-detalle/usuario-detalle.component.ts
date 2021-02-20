@@ -16,7 +16,7 @@ export class UsuarioDetalleComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private _usuarioServices: UsuarioServiceService,
+    private usuarioServices: UsuarioServiceService,
     private fb: FormBuilder) { }
 
   ngOnInit(): void {
@@ -26,8 +26,8 @@ export class UsuarioDetalleComponent implements OnInit {
         if(!params.has('id') || isNaN(+params.get('id'))){
           this.router.navigate(['/dashboard']);
         } else {
-          this._usuarioServices.usuarioDetalle(+params.get('id')).subscribe(user => {
-            this._usuarioServices.user = user;
+          this.usuarioServices.usuarioDetalle(+params.get('id')).subscribe(user => {
+            this.usuarioServices.user = user;
             this.usuarioId = +user.id;
             this.nombreUsuario = user.nombre;
             this.formulario.patchValue({nombre: user.nombre, edad: user.edad, apellido: user.apellido});
@@ -40,24 +40,26 @@ export class UsuarioDetalleComponent implements OnInit {
   iniciarFormulario() {
     this.formulario = this.fb.group({
       // asyncValidators: []
-      nombre: ["", { validators: Validators.required, updateOn: "blur" }],
+      nombre: ['', { validators: Validators.required, updateOn: 'blur' }],
       apellido: ['', Validators.required],
       edad: ['', [Validators.required, Validators.min(18), Validators.max(60)]]
     });
   }
-  ActualizarUsuario() {
-    this._usuarioServices.Uactualizarusuario(this.usuarioId, this.formulario.value)
+
+  // cambie la A
+  actualizarUsuario() {
+    this.usuarioServices.actualizarUsuario(this.usuarioId, this.formulario.value)
       .subscribe(data => {
         // this.router.navigate(['/dashboard']);
-        this._usuarioServices.mostraModal.next(true);
-    this._usuarioServices.infoModal.next({motivo: 'usuario', modalContent: `se actualizo el usuario`});
+        this.usuarioServices.mostraModal.next(true);
+    this.usuarioServices.infoModal.next({motivo: 'usuario', modalContent: `se actualizo el usuario`});
       });
   }
 
   eliminar() {
-    this._usuarioServices.mostraModal.next(true);
-    this._usuarioServices.infoModal.next({motivo: 'usuario', modalContent: `deseas eliminar al usuario: ${this.nombreUsuario}`});
-    // this._usuarioServices.eliminar(this.usuarioId).subscribe(data => console.log(data));101
+    this.usuarioServices.mostraModal.next(true);
+    this.usuarioServices.infoModal.next({motivo: 'usuario', modalContent: `deseas eliminar al usuario: ${this.nombreUsuario}`});
+    // this.usuarioServices.eliminar(this.usuarioId).subscribe(data => console.log(data));101
   }
 
   get nombre() {

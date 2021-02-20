@@ -1,5 +1,5 @@
-import { NoPreloading, PreloadAllModules, RouterModule, Routes } from "@angular/router";
-import { LoginComponent } from "./login/login.component";
+import { NoPreloading, PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
 
 const rutasPadre: Routes = [
     { path: 'login', component: LoginComponent },

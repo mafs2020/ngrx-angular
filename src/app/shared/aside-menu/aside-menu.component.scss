@@ -1,7 +1,7 @@
 .navbar{
     width: 5rem;
     height: 100vh;
-    background-color: #433d3c;
+    background-color: #374045;
     margin: 0;
     padding: 0;
     position: fixed;
@@ -44,7 +44,7 @@
 
 .nav-link:hover{
     filter: grayscale(0%) opacity(1);
-    background: #880e4f;
+    background: #d89216;
 }
 
 
@@ -67,8 +67,8 @@ svg{
     text-transform: uppercase;
     margin-bottom: 1rem;
     text-align: center;
-    color: #880e4f;
-    background: #880e4f;
+    color: #d89216;
+    background: #d89216;
     font-size: 1.5rem;
     letter-spacing: 0.3ch;
     width: 100%;

@@ -30,22 +30,18 @@ export const token = createSelector(
 
 export const usersReducer = createReducer<UsersState>(
     initialUser,
-    on(userActions.loginLoad, (state, action): UsersState => {
-        return {
+    on(userActions.loginLoad, (state, action): UsersState => ({
             ...state
-        }
-    }),
+        })),
     on(userActions.loginLoadSucess, (state, action): UsersState => {
         console.log('action :>> ', action);
         return {
             ...state,
             token: action.token
-        }
+        };
     }),
-    on(userActions.loginLoadError, (state, action): UsersState => {
-        return {
+    on(userActions.loginLoadError, (state, action): UsersState => ({
             ...state,
             error: action.error
-        }
-    })
+        }))
 );

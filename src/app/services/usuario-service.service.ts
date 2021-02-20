@@ -10,62 +10,52 @@ import { State } from '../pages/state/pages.reduce';
   providedIn: 'root'
 })
 export class UsuarioServiceService {
-  constructor(private http: HttpClient, private store$: Store<State>) { }
-  curretnUser :IUsuario;
+  curretnUser: IUsuario;
   user: IUsuario;
-  imagenBol: boolean = true;
-  mostraModal : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  imagenBol = true;
+  mostraModal: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   mostrarmodalnu = this.mostraModal.asObservable();
 
-  imagen : BehaviorSubject<string> = new BehaviorSubject<string>('http://localhost:3000/sssss.png');
+  imagen: BehaviorSubject<string> = new BehaviorSubject<string>('http://localhost:3000/sssss.png');
   imagenCambiar$ = this.imagen.asObservable();
-
   infoModal: Subject<IModal> = new Subject<IModal>();
   infoModal$ = this.infoModal.asObservable();
-  
+  constructor(private http: HttpClient, private store$: Store<State>) { }
+
+
 
   getAllUSers(pagina: number): Observable<IPaginacion> {
     return this.http.get<IPaginacion>(`http://localhost:3000/?pagina=${pagina}`)
     .pipe(
-      catchError(err => {
-        return this.handleError(err)
-      })
+      catchError(err => this.handleError(err))
     );
   }
 
-    crearUsuario(usuario:IUsuario): Observable<any>{
+    crearUsuario(usuario: IUsuario): Observable<any>{
       return this.http.post('http://localhost:3000/', usuario).pipe(
-        catchError(err => {
-          return this.handleError(err)
-        })
+        catchError(err => this.handleError(err))
       );
     }
 
-    usuarioDetalle(id: Number): Observable<IUsuario> {
+    usuarioDetalle(id: number): Observable<IUsuario> {
       return this.http.get<IUsuario>(`http://localhost:3000/${id}`).pipe(
-        catchError(err => {
-          return this.handleError(err)
-        })
+        catchError(err => this.handleError(err))
       );
     }
-
-    Uactualizarusuario(id: number, usu: IUsuario): Observable<IUsuario> {
+    // quite la U
+    actualizarUsuario(id: number, usu: IUsuario): Observable<IUsuario> {
       return this.http.put<IUsuario>(`http://localhost:3000/${id}`, usu).pipe(
-        catchError(err => {
-          return this.handleError(err)
-        })
+        catchError(err => this.handleError(err))
       );
     }
 
     eliminar(id: number): Observable<any> {
       return this.http.delete<any>(`http://localhost:3000/eliminar/${id}`).pipe(
-        catchError(err => {
-          return this.handleError(err)
-        })
+        catchError(err => this.handleError(err))
       );
     }
 
-    mostrarModalfuncion(data:IModal){
+    mostrarModalfuncion(data: IModal){
       this.mostraModal.next(true);
       this.infoModal.next(data);
     }
@@ -84,7 +74,7 @@ export class UsuarioServiceService {
       // instead of just logging it to the console
       console.log('este es el error', err);
       let errorMessage: string;
-      
+
       if (err?.message) {
         // A client-side or network error occurred. Handle it accordingly.
         // errorMessage = `a ocurrido un error: ${err.error.message}`;

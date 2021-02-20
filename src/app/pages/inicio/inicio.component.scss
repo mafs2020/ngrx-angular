@@ -1,59 +1,72 @@
 th, td {
-    padding: 15px;
-    text-align: left;
+    padding: 13px;
+    // text-align: left;
+    border-bottom: 1px solid #d89116b9;
+    text-align: center;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-tr:hover {background-color: #f5f5f5;}
+tr:nth-child(odd) {background-color: #e1d89f;}
+tr:hover{
+    background-color: #d89216;
+    color: #fff;
+}
+
 th{
-    background-color: #944e6c;
+    background-color: #374045;
     color: #fff;
     text-transform: uppercase;
+    height: 50px;
+}
+thead{
+    border-radius: 15px;
 }
 table{
     border-collapse: separate;
+    margin-top: 1rem;
     border-spacing: 0;
-    // table-layout: fixed;
-    border: 1px solid #e9c496;
-    width: 100%;
-    border-radius: 5px;
+    table-layout: fixed;
+    // border: 1px solid #e9c496;
+    width: 95%;
+    border-radius: 15px;
+    background-color: #f5f5f5;
 }
 
 input[type="button"]{
-    background-color: #944e6c;
+    background-color: #e1d89f;
     color: #fff;
     border: none;
     padding: 15px;
-    margin-top: 20px;
+    margin: 9px 5px 0 0;
     float: right;
     border-radius: 5px;
-}
-
-input[type="button"]:hover{
-    background-color: #fff;
-    color: #944e6c;
     cursor: pointer;
-    border: 2px solid #944e6c;
-}
-
-.top{
-    margin-top: 40px;
-}
-
-
-input{
-    margin-left: 1rem;
-    &:disabled, &:hover{
+    &:hover{
+        background-color: #fff;
+        color: #00917c;
+        border: 1px solid #00917c;
+    }
+    &:disabled{
         cursor: not-allowed;
         background-color: #dddddd;
         color: #fff;
     }
 }
 
+.botones{
+    margin: 1em auto;
+}
+
 @media screen and (max-width: 470px){
     .botones{
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    input[type="button"]{
+        display: block;
+        width: 100%;
+        // text-overflow: clip;
     }
 }

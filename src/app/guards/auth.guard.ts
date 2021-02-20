@@ -26,8 +26,8 @@ export class AuthGuard implements CanActivate {
 
   isLogin(): boolean {
     console.log('destinoooooooooooooooooo');
-    this.store.select( token ).subscribe(token => this.token = !!token);
+    this.store.select( token ).subscribe((tokenM) => this.token = !!tokenM);
     return this.token;
   }
-  
+
 }
