@@ -26,9 +26,9 @@
                 <span *ngIf="edad?.hasError('max')">el campo debe ser menor que 60</span>
             </div>
             <div class="botones">
-                <input class="btn boton__enviar" type="submit" [disabled]="formulario.invalid" value="Actualizar">
                 <input class="btn boton__regresar" type="button" value="Regresar" (click)="regresar()">
                 <input class="btn boton__eliminar" type="button" value="Eliminar" (click)="eliminar()">
+                <input class="btn boton__enviar" type="submit" [disabled]="formulario.invalid" value="Actualizar">
             </div>
             <!-- <pre>
                 {{ formulario.value | json }}

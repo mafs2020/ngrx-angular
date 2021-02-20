@@ -34,31 +34,31 @@ form {
 }
 
 .boton__enviar {
-    background-color: #880e4f;
+    background-color: #d89216;
     &:hover{
         background-color: #fff;
-        border: 2px solid #880e4f;
-        color: #880e4f;
+        border: 2px solid #d89216;
+        color: #d89216;
     }
 }
 
 .boton__eliminar {
-    background-color: #b71c1c;
+    background-color: #91091e;
     &:hover{
         background-color: #fff;
         outline: none;
-        border: 2px solid #b71c1c;
-        color: #b71c1c;
+        border: 2px solid #91091e;
+        color: #91091e;
     }
 }
 
 .boton__regresar{
     
-    background-color: #546e7a;
+    background-color: #822659;
     &:hover{
         background-color: #fff;
-        color: #546e7a;
-        border: 2px solid #546e7a;
+        color: #822659;
+        border: 2px solid #822659;
     }
 }
 

@@ -34,6 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ⋅⋅⋅* sequelize
 2. [Angular 11](https://angular.io/cli)
 ⋅⋅⋅* rxjs
+⋅⋅⋅* scss
 ⋅⋅⋅* se actualiza a `.eslintrc.json`
 ⋅⋅⋅* utiliza modulos lazy load
 
