@@ -4,21 +4,24 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Vistas
 
-![alt text](https://github.com/mafs/angular11/blob/master/src/assets/img/login.png?raw=true)
+![alt text](https://gitlab.com/mafs/ngrx-angular/-/tree/master/src/assets/imglogin.png?raw=true)
 
-![alt text](https://github.com/mafs/angular11/blob/master/src/assets/img/dashboard.png?raw=true)
+![alt text](https://gitlab.com/mafs/ngrx-angular/-/tree/master/src/assets/img/dashboard.png?raw=true)
 
 ## Tecnologia utilizada
 
-1. `Node js` para el backend
-⋅⋅⋅* express
-⋅⋅⋅* jwt
-⋅⋅⋅* sequelize
-2. [Angular 11](https://angular.io/cli)
-⋅⋅⋅* rxjs
-⋅⋅⋅* scss
-⋅⋅⋅* se actualiza a `.eslintrc.json`
-⋅⋅⋅* utiliza modulos lazy load
+1. `Node js` para el backend :v:
+- express
+- jwt
+- sequelize
+2. [Angular 11](https://angular.io/cli) :punch:
+- rxjs
+- scss
+- se actualiza a `.eslintrc.json`
+- utiliza modulos lazy load
+
+:clap: :muscle: :muscle:
+
 
 ## Development server
 
