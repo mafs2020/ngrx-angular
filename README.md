@@ -4,9 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Vistas
 
-![alt text](https://gitlab.com/mafs/ngrx-angular/-/src/assets/imglogin.png?raw=true)
+![alt text](/assets/imglogin.png?raw=true)
 <!-- ?raw=true -->
-![alt text](https://gitlab.com/mafs/ngrx-angular/-/src/assets/img/dashboard.png?raw=true)
+![alt text](/assets/img/dashboard.png?raw=true)
 
 ## Tecnologia utilizada
 
