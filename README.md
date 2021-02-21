@@ -4,9 +4,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Vistas
 
-![alt text](/assets/img/login.png?raw=true)
-<!-- ?raw=true -->
-![alt text](/assets/img/dashboard.png)
+### Login
+![](https://github.com/mafs2020/ngrx-angular/blob/main/src/assets/img/login.png)
+
+### Administrar
+![](https://github.com/mafs2020/ngrx-angular/blob/main/src/assets/img/dashboard.png)
 
 ## Tecnologia utilizada
 
